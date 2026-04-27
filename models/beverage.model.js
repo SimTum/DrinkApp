@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const BeverageSchema = mongoose.Schema(
     {
         idDrink: {
-            type: String,
+            type: Number,
             required: true
         },
         strDrink: {

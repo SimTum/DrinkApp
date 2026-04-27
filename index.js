@@ -8,10 +8,17 @@ mongoose.connect('mongodb+srv://DrinkAdmin:wsM03rwEJiOF9Jc7@driknappdb.v1kngum.m
 
 
 const app = express()
+app.use(express.json)
 
 app.get('/', (req, res) => {
   res.send('Hello World, We use Nodemon')
 })
+
+
+app.post('api/beverage', (req,res) => {
+    res.send("data recieved");
+});
+
 app.listen(3000, () => {
 
     console.log("Hello, woof! We are at port 3000");
