@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const BeverageSchema = mongoose.Schema(
+const BeverageSchema = new mongoose.Schema(
     {
         idDrink: {
             type: Number,
@@ -31,8 +31,9 @@ const BeverageSchema = mongoose.Schema(
             required: false
         },
         strAlcoholic: {
-            type: String,
-            required: false
+            type: Boolean,
+            required: true,
+            default : false
         },
         strGlass: {
             type: String,
@@ -72,7 +73,8 @@ const BeverageSchema = mongoose.Schema(
         },
         strIngredient1: {
             type: String,
-            required: false
+            required: true,
+            default: "water"
         },
         strIngredient2: {
             type: String,
@@ -132,7 +134,8 @@ const BeverageSchema = mongoose.Schema(
         },
         strMeasure1: {
             type: String,
-            required: false
+            required: true,
+            default: "1 cup"
         },
         strMeasure2: {
             type: String,
@@ -208,11 +211,11 @@ const BeverageSchema = mongoose.Schema(
         },
     },
     {
-        timestamp: true
+        timestamps: true
     }
 
 );
 
 const Bevarage = mongoose.model("Beverage", BeverageSchema)
 
-module.exports = BeverageSchema;
+export default Bevarage;

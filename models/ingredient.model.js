@@ -1,43 +1,47 @@
 import mongoose from "mongoose";
 
-const IngredientSchema = mongoose.Schema(
+const IngredientSchema = new mongoose.Schema(
     {
-idIngredient:
-	{
-        type: String,
-        required: true
-    },
-strIngredient:
-	{
-        type: String,
-        required: true
-    },
-strDescription:
-	{
-        type: String,
-        required: false
-    },
-strType:
-	{
-        type: String,
-        required: false
-    },
-strAlcohol:
-	{
-        type: String,
-        required: true
-    },
-strABV:
-	{
-        type: String,
-        required: false
-    },
+        idIngredient:
+        {
+            type: String,
+            required: true
+        },
+        strIngredient:
+        {
+            type: String,
+            required: true
+        },
+        strDescription:
+        {
+            type: String,
+            required: false
+        },
+        strType:
+        {
+            type: String,
+            required: false
+        },
+        strAlcohol:
+        {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        strABV:
+        {
+            type: String,
+            required: false
+        },
 
+    },
+    {
+        timestamps: true
     }
-  
 
 );
 
-const Ingredient = mongoose.model("Ingredientt", IngredientSchema)
+const Ingredient = mongoose.model("Ingredient", IngredientSchema)
 
-module.exports = IngredientSchema;
+
+export default Ingredient;
