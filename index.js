@@ -1,3 +1,4 @@
+require('dotenv').config()
 import express, { response } from 'express'
 import mongoose from 'mongoose'
 import Beverage from './models/beverage.model.js'
@@ -80,8 +81,37 @@ app.delete('api/beverage/:id', async (req, res) => {
     }
 })
 
-app.listen(3000, () => {
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
+// INGREDIENTS
 
+app.get('/api/ingredients', async (req,res) => {
+    try {
+        const ingredients = await Ingredient.find({})
+        res.status(200).json(ingredients)
+        
+    } catch (error) {
+        res.status(500).json({messag: error})
+    }
+})
+
+app.
+
+app.listen(3000, () => {
++
     console.log("Hello, woof! We are at http://localhost:3000");
 
 })
