@@ -6,6 +6,7 @@ const BeverageSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
+
         strDrink: {
             type: String,
             required: true

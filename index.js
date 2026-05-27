@@ -26,6 +26,18 @@ app.get('/api/beverages', async (req, res) => {
     }
 })
 
+app.get('/api/beverage/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const bevarage = await Beverage.findById(id);
+        res.status(200).json(bevarage);
+    } catch (error) {
+        res.status(500).json({ message: error })
+    }
+})
+
+
+
 
 app.post('/api/beverage', async (req, res) => {
     try {
@@ -38,6 +50,33 @@ app.post('/api/beverage', async (req, res) => {
 
 
 });
+
+app.put('api/beverage/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const beverage = await Bevarage.findByIdAndUpdate(id, req.body);
+        if (!beverage) {
+            return res.status(400).json({ message: "bebida não foi encontrada" })
+        }
+
+        const updBeverage = await Beverage.findById(id)
+        res.status(200).json({ message: updBeverage });
+    }
+    catch (err) {
+        res.status(500).json({ message: err });
+    }
+})
+
+app.delete('api/beverage/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const beverage = await Beverage.findByIdAndDelete(id);
+        res.status(200)
+    }
+    catch (error) {
+        res.status(500).json({ message: error })
+    }
+})
 
 app.listen(3000, () => {
 
