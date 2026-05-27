@@ -9,7 +9,7 @@ import Bevarage from './models/beverage.model.js'
 const app = express()
 app.use(express.json())
 
-const mongoUrl = process.env.MONGO_CONNECTION_STRING
+const mongoUrl = process.env.MONGO_CONNECTBION_STRING
  
 mongoose.connect(mongoUrl)
     .then(() => console.log("Sucessfullt connected to MongoDB"))
