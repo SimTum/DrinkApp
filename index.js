@@ -8,7 +8,9 @@ import Bevarage from './models/beverage.model.js'
 const app = express()
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://DrinkAdmin:wsM03rwEJiOF9Jc7@driknappdb.v1kngum.mongodb.net/Node-API?appName=DriknAppDB')
+const mongoUrl = process.env.MONGO_CONNECTION_STRING
+ 
+mongoose.connect(mongoUrl)
     .then(() => console.log("Sucessfullt connected to MongoDB"))
     .catch((err) => console.log("Connection failed", err)
     )
