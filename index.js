@@ -1,4 +1,4 @@
-require('dotenv').config()
+import 'dotenv/config'
 import express, { response } from 'express'
 import mongoose from 'mongoose'
 import Beverage from './models/beverage.model.js'
