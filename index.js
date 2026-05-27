@@ -17,7 +17,7 @@ mongoose.connect(mongoUrl)
     )
 
 app.get('/', (req, res) => {
-    res.send('Hello World, We use Nodemon')
+    res.send('Hello World, We are testig if it is actually updating')
 })
 
 app.get('/api/beverages', async (req, res) => {
