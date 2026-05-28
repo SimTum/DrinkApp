@@ -84,7 +84,11 @@ const BeverageSchema = new mongoose.Schema(
             required: false,
             trim: true
         },
-        ingredients: [{IngredientSchema}],
+        ingredients: [{IngredientSchema, ingredientAmount : {
+            type: String,
+            required : true, 
+            trim: true
+        }}],
         // Ingredient2: {
         //     type: String,
         //     required: false,
@@ -155,10 +159,6 @@ const BeverageSchema = new mongoose.Schema(
         //     required: false,
         //     trim: true
         // },
-        strMeasiures: [{
-            type: String, 
-            trim: true
-        }],
         // strMeasure1: {
         //     type: String,
         //     required: true,

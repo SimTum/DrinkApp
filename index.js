@@ -61,11 +61,8 @@ app.post('/api/beverage', async (req, res) => {
         await Promise.all(req.body.ingredients.map(async (ingredient) => {
             console.log("ingredients in our request (individual) ", ingredient.strIngredient);
 
-            const ingredientExists = await Ingredient.findOne({ strIngredient: ingredient.strIngredient })
-            if (!ingredientExists) {
-                await Ingredient.create(ingredient)
-                console.log('new Ingredient was created automatically', ingredient)
-            }
+            await checkAndCreateIngredient(ingredient);
+      
 
         }))
         const beverage = await Beverage.create(req.body)
@@ -78,7 +75,7 @@ app.post('/api/beverage', async (req, res) => {
 
 });
 
-app.put('api/beverage/:id', async (req, res) => {
+app.put('/api/beverage/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const beverage = await Bevarage.findByIdAndUpdate(id, req.body);
@@ -94,11 +91,11 @@ app.put('api/beverage/:id', async (req, res) => {
     }
 })
 
-app.delete('api/beverage/:id', async (req, res) => {
+app.delete('/api/beverage/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const beverage = await Beverage.findByIdAndDelete(id);
-        res.status(200)
+        res.status(200).json({message: `bevereage with id ${id} was deleted successfully`})
     }
     catch (error) {
         res.status(500).json({ message: error })
@@ -130,8 +127,8 @@ app.get('/api/ingredient/:id', async (req, res) => {
 
 app.post('/api/ingredient', async (req, res) => {
     try {
-        const ingredient = await Ingredient.create(req.body)
-        res.status(200).json(ingredient)
+        await checkAndCreateIngredient(req.body)
+        res.status(200).json(req.body)
     } catch (error) {
         res.status(500).json({ message: error })
     }
@@ -156,7 +153,7 @@ app.delete('/api/ingredient/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const ingredient = await Ingredient.findByIdAndDelete(id)
-        res.status(200)
+        res.status(200).json({message: `bevereage with id ${id} was deleted successfully`})
     }
     catch (error) {
         res.status(500).json({ message: error })
@@ -170,3 +167,20 @@ app.listen(3000, () => {
 
 
 
+
+
+
+
+
+
+
+
+//FUNCTIONS 
+async function checkAndCreateIngredient(ingredient) {
+
+    const ingredientExists = await Ingredient.findOne({ strIngredient: ingredient.strIngredient })
+    if (!ingredientExists) {
+        await Ingredient.create(ingredient)
+        console.log('new Ingredient was created automatically', ingredient)
+    }
+}
