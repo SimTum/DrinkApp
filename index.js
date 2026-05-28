@@ -16,6 +16,9 @@ await mongoose.connect(mongoUrl)
     .catch((err) => console.log("Connection failed", err)
     )
 
+
+
+
 app.get('/api/debug', (req, res) => {
     res.json({ mongoUrl: process.env.MONGO_CONNECTION_STRING ? `set` : "not set" })
 })
@@ -44,6 +47,7 @@ app.get('/api/beverage/:id', async (req, res) => {
 })
 
 
+const mock = "test"
 
 
 app.post('/api/beverage', async (req, res) => {

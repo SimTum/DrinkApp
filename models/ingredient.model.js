@@ -2,36 +2,37 @@ import mongoose from "mongoose";
 
 const IngredientSchema = new mongoose.Schema(
     {
-        idIngredient:
-        {
-            type: String,
-            required: true
-        },
         strIngredient:
         {
             type: String,
-            required: true
+            required: true,
+            trim: true
+
         },
         strDescription:
         {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strType:
         {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strAlcohol:
         {
             type: Boolean,
             required: true,
-            default: false
+            default: false,
+            trim: true
         },
         strABV:
         {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
 
     },

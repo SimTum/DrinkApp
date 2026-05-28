@@ -1,35 +1,37 @@
 import mongoose from "mongoose";
+import Ingredient from "./ingredient.model.js";
 
 const BeverageSchema = new mongoose.Schema(
     {
-        idDrink: {
-            type: Number,
-            required: true
-        },
-
         strDrink: {
             type: String,
-            required: true
+            required: true,
+            trim: true
         },
         strDrinkAlternate: {
             type: String,
-            required: false
+            required: false,
+            trim: true 
         },
         strTags: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strVideo: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strCategory: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strIBA: {
             type: String,
-            required: false
+            required: false,
+            trim: true  
         },
         strAlcoholic: {
             type: Boolean,
@@ -38,177 +40,222 @@ const BeverageSchema = new mongoose.Schema(
         },
         strGlass: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strInstructions: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strInstructionsES: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strInstructionsDE: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strInstructionsFR: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strInstructionsIT: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strInstructionsZH: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strInstructionsZH: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strDrinkThumb: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient1: {
+        Ingredient1: {
             type: String,
             required: true,
-            default: "water"
+            default: "Water",
+            trim: true
+
+            
         },
-        strIngredient2: {
+        Ingredient2: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient3: {
+        Ingredient3: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient4: {
+        Ingredient4: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient5: {
+        Ingredient5: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient6: {
+        Ingredient6: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient7: {
+        Ingredient7: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient8: {
+        Ingredient8: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient9: {
+        Ingredient9: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient10: {
+        Ingredient10: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient11: {
+        Ingredient11: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient12: {
+        Ingredient12: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient13: {
+        Ingredient13: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient14: {
+        Ingredient14: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
-        strIngredient15: {
+        Ingredient15: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure1: {
             type: String,
             required: true,
-            default: "1 cup"
+            default: "1 cup",
+            
         },
         strMeasure2: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure3: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure4: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure5: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure6: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure7: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure8: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure9: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure10: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure11: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure12: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure13: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure14: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strMeasure15: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strImageSource: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strImageAttribution: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         strCreativeCommonsConfirmed: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
         dateModified: {
             type: String,
-            required: false
+            required: false,
+            trim: true
         },
     },
     {
