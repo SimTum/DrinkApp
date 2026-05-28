@@ -17,7 +17,7 @@ mongoose.connect(mongoUrl)
     )
 
 app.get('/api/debug', (req, res) => {
-    res.json({ mongoUrl: process.env.MONGO_CONNECTION_STRING ? "set" : "not set" })
+    res.json({ mongoUrl: process.env.MONGO_CONNECTION_STRING ? `set ${process.env.MONGO_CONNECTION_STRING}` : "not set" })
 })
 
 app.get('/', (req, res) => {
