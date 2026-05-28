@@ -4,6 +4,8 @@ import mongoose from 'mongoose'
 import Beverage from './models/beverage.model.js'
 import Ingredient from './models/ingredient.model.js'
 import Bevarage from './models/beverage.model.js'
+import auth from './middleware/authenticate.js'
+import ctrl from './controllers/authController.js'
 
 
 const app = express()
@@ -16,18 +18,24 @@ await mongoose.connect(mongoUrl)
     .catch((err) => console.log("Connection failed", err)
     )
 
-
-
-
 app.get('/api/debug', (req, res) => {
     res.json({ mongoUrl: process.env.MONGO_CONNECTION_STRING ? `set` : "not set" })
 })
+
+//AUTHENTICATION
+
+app.post('/register', ctrl.register )
+app.post('/login', ctrl.login )
+
+
+
+//AUTHENTICATION
 
 app.get('/', (req, res) => {
     res.send('Hello World, We are testig if it is actually updating')
 })
 
-app.get('/api/beverages', async (req, res) => {
+app.get('/api/beverages', auth, async (req, res) => {
     try {
         const bevarages = await Beverage.find({});
         res.status(200).json(bevarages);

@@ -1,4 +1,4 @@
-import mongose from 'mongoose'
+import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 
 const userSchema = new mongoose.Schema({
@@ -18,4 +18,7 @@ userSchema.methods.compararPassword = function(senha) {
   return bcrypt.compare(senha, this.senha);
 };
 
-export default mongoose.model('User', userSchema);
+
+const User = mongoose.model('User', userSchema);
+
+export default User  
