@@ -4,8 +4,8 @@ import mongoose from 'mongoose'
 import Beverage from './models/beverage.model.js'
 import Ingredient from './models/ingredient.model.js'
 import Bevarage from './models/beverage.model.js'
-import auth from './middleware/authenticate.js'
-import ctrl from './controllers/authController.js'
+import * as auth from './middleware/authenticate.js'
+import * as ctrl from './controllers/authController.js'
 
 
 const app = express()
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
     res.send('Hello World, We are testig if it is actually updating')
 })
 
-app.get('/api/beverages', auth, async (req, res) => {
+app.get('/api/beverages', auth.auth, async (req, res) => {
     try {
         const bevarages = await Beverage.find({});
         res.status(200).json(bevarages);

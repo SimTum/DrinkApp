@@ -2,9 +2,9 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 
 const userSchema = new mongoose.Schema({
-  nome:  { type: String, required: true },
+  name:  { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  senha: { type: String, required: true, minlength: 6 }
+  password: { type: String, required: true, minlength: 6 }
 }, { timestamps: true });
 
 // Hook: criptografar senha antes de salvar
