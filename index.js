@@ -11,13 +11,13 @@ app.use(express.json())
 
 const mongoUrl = process.env.MONGO_CONNECTION_STRING
  
-mongoose.connect(mongoUrl)
+await mongoose.connect(mongoUrl)
     .then(() => console.log("Successful connected to MongoDB"))
     .catch((err) => console.log("Connection failed", err)
     )
 
 app.get('/api/debug', (req, res) => {
-    res.json({ mongoUrl: process.env.MONGO_CONNECTION_STRING ? `set ${process.env.MONGO_CONNECTION_STRING}` : "not set" })
+    res.json({ mongoUrl: process.env.MONGO_CONNECTION_STRING ? `set` : "not set" })
 })
 
 app.get('/', (req, res) => {
