@@ -52,6 +52,18 @@ const mock = "test"
 
 app.post('/api/beverage', async (req, res) => {
     try {
+        const exists = await Beverage.findOne({strDrink: req.body.strDrink})
+        if (exists){
+            return res.status(409).json({message: "Beverage already exists"})
+        }
+        req.body.ingredients.forEach(async (ingredient) => {
+            const ingredientExists = await Ingredient.findOne({strIngredient : ingredient.strIngredient})
+            if(!ingredientExists){
+                await Ingredient.create(ingredient)
+                console.log('new Ingredient was created automatically', ingredient)
+            }
+            
+        });
         const beverage = await Beverage.create(req.body)
         res.status(200).json(beverage)
 
