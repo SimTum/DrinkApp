@@ -32,7 +32,7 @@ app.get('/api/beverages', async (req, res) => {
         const bevarages = await Beverage.find({});
         res.status(200).json(bevarages);
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message.message })
     }
 })
 
@@ -42,7 +42,7 @@ app.get('/api/beverage/:id', async (req, res) => {
         const bevarage = await Beverage.findById(id);
         res.status(200).json(bevarage);
     } catch (error) {
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -69,7 +69,7 @@ app.post('/api/beverage', async (req, res) => {
         res.status(200).json(beverage)
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message.message });
     }
 
 
@@ -86,8 +86,8 @@ app.put('/api/beverage/:id', async (req, res) => {
         const updBeverage = await Beverage.findById(id)
         res.status(200).json({ message: updBeverage });
     }
-    catch (err) {
-        res.status(500).json({ message: err });
+    catch (error) {
+        res.status(500).json({ message: error.message });
     }
 })
 
@@ -98,7 +98,7 @@ app.delete('/api/beverage/:id', async (req, res) => {
         res.status(200).json({message: `bevereage with id ${id} was deleted successfully`})
     }
     catch (error) {
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -111,7 +111,7 @@ app.get('/api/ingredients', async (req, res) => {
         res.status(200).json(ingredients)
     } catch (error) {
 
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -121,7 +121,7 @@ app.get('/api/ingredient/:id', async (req, res) => {
         const ingredient = await Ingredient.findById(id)
         res.status(200).json(ingredient)
     } catch (error) {
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -130,7 +130,7 @@ app.post('/api/ingredient', async (req, res) => {
         await checkAndCreateIngredient(req.body)
         res.status(200).json(req.body)
     } catch (error) {
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -145,7 +145,7 @@ app.put('/api/ingredient/:id', async (req, res) => {
         res.status(200).json(updIngredient)
     }
     catch (error) {
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -156,7 +156,7 @@ app.delete('/api/ingredient/:id', async (req, res) => {
         res.status(200).json({message: `bevereage with id ${id} was deleted successfully`})
     }
     catch (error) {
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
