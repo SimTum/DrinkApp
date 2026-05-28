@@ -16,6 +16,10 @@ mongoose.connect(mongoUrl)
     .catch((err) => console.log("Connection failed", err)
     )
 
+app.get('/api/debug', (req, res) => {
+    res.json({ mongoUrl: process.env.MONGO_CONNECTION_STRING ? "set" : "not set" })
+})
+
 app.get('/', (req, res) => {
     res.send('Hello World, We are testig if it is actually updating')
 })
