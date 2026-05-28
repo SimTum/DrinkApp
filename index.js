@@ -52,18 +52,22 @@ const mock = "test"
 
 app.post('/api/beverage', async (req, res) => {
     try {
-        const exists = await Beverage.findOne({strDrink: req.body.strDrink})
-        if (exists){
-            return res.status(409).json({message: "Beverage already exists"})
+        const exists = await Beverage.findOne({ strDrink: req.body.strDrink })
+        if (exists) {
+            return res.status(409).json({ message: "Beverage already exists" })
         }
-        req.body.ingredients.forEach(async (ingredient) => {
-            const ingredientExists = await Ingredient.findOne({strIngredient : ingredient.strIngredient})
-            if(!ingredientExists){
+        console.log("ingredients in our request ", req.body.ingredients);
+
+        await Promise.all(req.body.ingredients.map(async (ingredient) => {
+            console.log("ingredients in our request (individual) ", ingredient.strIngredient);
+
+            const ingredientExists = await Ingredient.findOne({ strIngredient: ingredient.strIngredient })
+            if (!ingredientExists) {
                 await Ingredient.create(ingredient)
                 console.log('new Ingredient was created automatically', ingredient)
             }
-            
-        });
+
+        }))
         const beverage = await Beverage.create(req.body)
         res.status(200).json(beverage)
 
@@ -126,22 +130,22 @@ app.get('/api/ingredient/:id', async (req, res) => {
 
 app.post('/api/ingredient', async (req, res) => {
     try {
-        const ingredient = await Ingredient.create(req.body)   
-        res.status(200).json(ingredient)    
+        const ingredient = await Ingredient.create(req.body)
+        res.status(200).json(ingredient)
     } catch (error) {
         res.status(500).json({ message: error })
-    }   
-})  
+    }
+})
 
 app.put('/api/ingredient/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const ingredient = await Ingredient.findByIdAndUpdate(id,req.body) 
-        if(!ingredient){
+        const ingredient = await Ingredient.findByIdAndUpdate(id, req.body)
+        if (!ingredient) {
             return res.status(400).json({ message: "ingrediente não encontrado" })
-        }   
+        }
         const updIngredient = await Ingredient.findById(id)
-        res.status(200).json(updIngredient)    
+        res.status(200).json(updIngredient)
     }
     catch (error) {
         res.status(500).json({ message: error })
@@ -153,11 +157,11 @@ app.delete('/api/ingredient/:id', async (req, res) => {
     try {
         const ingredient = await Ingredient.findByIdAndDelete(id)
         res.status(200)
-    }           
+    }
     catch (error) {
         res.status(500).json({ message: error })
     }
-})             
+})
 
 app.listen(3000, () => {
     console.log("Hello, woof! We are at http://localhost:3000");

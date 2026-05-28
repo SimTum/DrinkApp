@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {Ingredient} from "./ingredient.model.js";
+import {IngredientSchema} from "./ingredient.model.js";
 
 const BeverageSchema = new mongoose.Schema(
     {
@@ -84,7 +84,7 @@ const BeverageSchema = new mongoose.Schema(
             required: false,
             trim: true
         },
-        ingredients: [ingredientSchema],
+        ingredients: [{IngredientSchema}],
         // Ingredient2: {
         //     type: String,
         //     required: false,

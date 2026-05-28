@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const IngredientSchema = new mongoose.Schema(
+export const IngredientSchema = new mongoose.Schema(
     {
         strIngredient:
         {
