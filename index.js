@@ -25,7 +25,7 @@ app.get('/api/beverages', async (req, res) => {
         const bevarages = await Beverage.find({});
         res.status(200).json(bevarages);
     } catch (error) {
-        res.status(500).json({ message: error })
+        res.status(500).json({ message: error.message })
     }
 })
 
