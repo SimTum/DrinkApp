@@ -82,28 +82,14 @@ app.delete('api/beverage/:id', async (req, res) => {
 })
 
 // INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
-// INGREDIENTS
+
 
 app.get('/api/ingredients', async (req,res) => {
     try {
         const ingredients = await Ingredient.find({})
         res.status(200).json(ingredients)
-        
     } catch (error) {
+        
         res.status(500).json({messag: error})
     }
 })
