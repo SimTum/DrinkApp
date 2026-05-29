@@ -1,17 +1,14 @@
-import jwt from 'jsonwebtoken'
+import 'dotenv/config'
 import User from '../models/user.model.js'
+import { generateToken, comparePassword } from '../shared/user.utils.js'
 
 
 // REGISTER
 export const register = async (req, res) => {
-    res.send(req.header, req.body)
+
     try {
         const user = await User.create(req.body)
-        const token = jwt.sign(
-            { id: user._id },
-            process.env.JWT_SECRET,
-            { expiresIn: '12h' }
-        );
+        const token = generateToken(user)
         res.status(201).json({ token })
 
     } catch (error) {
@@ -24,13 +21,9 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     const { email, password } = req.body
     const user = await User.findOne({ email })
-    if (!user || await user.comparePassword(password))
+    if (!user || !comparePassword(password, user.password))
         return res.status(401).json({ messge: "invalid credentials" })
 
-    const token = jwt.sign(
-        { id: user._id },
-        process.env.JWT_SECRET,
-        { expiresIn: '12h' }
-    )
+    const token = generateToken(user)
     res.json({ token })
 }

@@ -1,7 +1,9 @@
 import jwt from "jsonwebtoken"
 
 export const auth = (req, res, next) => {
-    const header = req.header.authorization
+    const header = req.headers.authorization
+    console.log(header);
+    
 
     if (!header) {
         return res.status(401).json({messgae: "No token was provided"})
@@ -9,7 +11,7 @@ export const auth = (req, res, next) => {
 
     const token = header.replace(
         'Bearer', ''
-    );
+    ).trim();
 
     try {
         const decoded = jwt.verify(
