@@ -96,7 +96,7 @@ app.put('/api/beverage/:id', async (req, res) => {
         }
 
         const updBeverage = await Beverage.findById(id)
-        res.status(200).json({ message: updBeverage });
+        res.status(200).json(updBeverage);
     }
     catch (error) {
         res.status(500).json({ message: error.message });
