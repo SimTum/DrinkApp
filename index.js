@@ -7,10 +7,12 @@ import Bevarage from './models/beverage.model.js'
 // import * as auth from './middleware/authenticate.js'
 import * as ctrl from './controllers/authController.js'
 import { auth } from './middleware/authenticate.js'
+import cors from 'cors';
 
 
 const app = express()
 app.use(express.json())
+app.use(cors());
 // app.use(auth)
 
 const mongoUrl = process.env.MONGO_CONNECTION_STRING
